@@ -63,42 +63,10 @@
 
 - Установка прошла первые успешные испытания.
 - Были произведены тестовые выстрелы зубочистками.
-- Наведение и стрельба осуществляются вручную через потенциометры.
+  
+<video src=https://github.com/user-attachments/assets/00cf9d22-e23f-4038-b945-aced7efc476f width="50%" height="50%"/>
 
+Наведение и стрельба осуществляются вручную через потенциометры.
 
----
+<video src=https://github.com/user-attachments/assets/5754e452-fa33-4a1c-b386-b8757990fe3e width="50%" height="50%"/>
 
-## 4. Код программы для Arduino
-
-```cpp
-#include <Servo.h>
-
-Servo servoX;           // поворот влево/вправо
-Servo servoY;           // наклон вверх/вниз
-Servo servoTrigger;     // натяжение и спуск
-
-int potX = A0;
-int potY = A1;
-int potTrigger = A2;
-
-void setup() {
-  servoX.attach(9);
-  servoY.attach(10);
-  servoTrigger.attach(11);
-}
-
-void loop() {
-  int valX = analogRead(potX);
-  int valY = analogRead(potY);
-  int valTrigger = analogRead(potTrigger);
-
-  valX = map(valX, 0, 1023, 0, 180);
-  valY = map(valY, 0, 1023, 0, 180);
-  valTrigger = map(valTrigger, 0, 1023, 0, 180);
-
-  servoX.write(valX);
-  servoY.write(valY);
-  servoTrigger.write(valTrigger);
-
-  delay(15);
-}
